@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane prefHeight="574.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.empresa.systemerp.controller.DashboardController">
+   <children>
+      <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="189.0" prefWidth="886.0" spacing="80.0">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff5555cf; -fx-background-radius: 50 0 50 0;">
+               <opaqueInsets>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff5555cf; -fx-background-radius: 50 0 50 0;">
+               <opaqueInsets>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </opaqueInsets>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ff5555cf; -fx-background-radius: 50 0 50 0;">
+               <opaqueInsets>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </opaqueInsets>
+            </Pane>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>
