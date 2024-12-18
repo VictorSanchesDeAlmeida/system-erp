@@ -21,12 +21,7 @@ public class ErpScreen {
 
     public void setUserName(String userName){nameUser.setText("Olá, " + userName);}
 
-    public void setCorrentUser(User user){this.correntUser = user;}
-
-    public void updateUserInfo(String username, String firstName, String lastName, String email) {
-        this.correntUser.setUser(username, firstName, lastName, email);
-        System.out.println(this.correntUser.getFullName());
-    }
+    public void setCorrentUser(User user){correntUser = user;}
 
     public void DashboardRedirect(javafx.event.ActionEvent actionEvent) throws IOException {
 
@@ -51,6 +46,7 @@ public class ErpScreen {
 
         AccountController userCorrent = loader.getController();
         userCorrent.loadUserInfo(this.correntUser);
+
         System.out.println(this.correntUser.getLastName());
 
         contentArea.getChildren().clear();

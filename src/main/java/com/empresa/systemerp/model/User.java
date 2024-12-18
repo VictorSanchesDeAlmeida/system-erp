@@ -18,14 +18,6 @@ public class User {
 
     }
 
-    public void setUser(String username, String first_name, String last_name, String email){
-        this.username = username;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.email = email;
-    }
-
-
     public String getFullName(){
         return this.first_name + " " + this.last_name;
     }
@@ -49,4 +41,6 @@ public class User {
     public int getId() {
         return  this.id;
     }
+
+    
 }

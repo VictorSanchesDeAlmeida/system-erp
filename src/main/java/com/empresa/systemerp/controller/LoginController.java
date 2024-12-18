@@ -30,6 +30,14 @@ public class LoginController {
     @FXML
     private PasswordField txtPassword;
 
+    //private FXMLLoader loader;
+
+    //public LoginController(FXMLLoader loader){
+
+        //this.loader = loader;
+
+    //}
+
     public void btnClose_OnAction(ActionEvent event) {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
@@ -77,6 +85,7 @@ public class LoginController {
                             queryResult.getString("email")
                     );
 
+                    //loader = (FXMLLoader) loader.getClass().getResource("/com/empresa/systemerp/view/ErpScreen.fxml");
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/empresa/systemerp/view/ErpScreen.fxml"));
                     Parent root = loader.load();

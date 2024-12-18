@@ -1,6 +1,9 @@
 package com.empresa.systemerp.model;
 
 import com.empresa.systemerp.config.DatabaseConnection;
+import com.empresa.systemerp.controller.ErpScreen;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +14,7 @@ public class UserModel extends User {
         super(id, username, first_name, last_name, email);
     }
 
-    public User saveUserInfo(){
+    public User updateUserInfo(String username, String firstname, String lastname, String email){
         DatabaseConnection conn = new DatabaseConnection();
         Connection connectionDb = conn.getConnection();
 
@@ -26,21 +29,29 @@ public class UserModel extends User {
 
             PreparedStatement stmt = connectionDb.prepareStatement(updateUser);
 
-            stmt.setString(1, this.getUsername());
-            stmt.setString(2, this.getFirstName());
-            stmt.setString(3, this.getLastName());
-            stmt.setString(4, this.getEmail());
+            stmt.setString(1, username);
+            stmt.setString(2, firstname);
+            stmt.setString(3, lastname);
+            stmt.setString(4, email);
             stmt.setInt(5, this.getId());
 
             int rowsAffected = stmt.executeUpdate();
 
             if(rowsAffected > 0){
 
-                this.setUser(this.getUsername(), this.getFirstName(), this.getLastName(), this.getEmail());
+                User user = new User(this.getId(), username, firstname, lastname, email);
 
-                return this;
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/empresa/systemerp/view/ErpScreen.fxml"));
+                Parent root = loader.load();
+
+                ErpScreen erpScreenController = loader.getController();
+                erpScreenController.setCorrentUser(user);
+
+                System.out.println(user.getFullName());
+                return user;
 
             }else {
+                System.out.println("Usuario Não atualizado...");
                 return null;
             }
 
@@ -49,5 +60,4 @@ public class UserModel extends User {
         }
         return null;
     }
-
 }

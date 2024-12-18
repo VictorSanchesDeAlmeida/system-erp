@@ -3,13 +3,8 @@ package com.empresa.systemerp.controller;
 import com.empresa.systemerp.model.User;
 import com.empresa.systemerp.model.UserModel;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
-import java.io.IOException;
-
 
 public class AccountController {
 
@@ -44,22 +39,10 @@ public class AccountController {
             statusMessage.setText("Saving...");
 
             UserModel saveUser = new UserModel(this.userId, username.getText(), firstName.getText(), lastName.getText(), email.getText());
-            User saving = saveUser.saveUserInfo();
+            User saving = saveUser.updateUserInfo(username.getText(), firstName.getText(), lastName.getText(), email.getText());
 
             if (saving != null){
                 statusMessage.setText("Informações salvas com sucesso!!");
-
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/empresa/systemerp/view/ErpScreen.fxml"));
-                    Parent root = loader.load();
-                    ErpScreen chageName = loader.getController();
-                    chageName.setCorrentUser(saving);
-                    chageName.updateUserInfo(saving.getUsername(), saving.getFirstName(), saving.getLastName(), saving.getEmail());
-                    chageName.setUserName(saving.getFirstName() + " " + saving.getLastName());
-                } catch (IOException e) {
-                    statusMessage.setText("Error loading screen: " + e.getMessage());
-                }
-
             }else {
                 statusMessage.setText("Algo deu errado, contate o suporte.");
             }
