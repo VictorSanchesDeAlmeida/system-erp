@@ -45,6 +45,7 @@ public class ErpScreen {
         Parent fxml = loader.load();
 
         AccountController userCorrent = loader.getController();
+
         userCorrent.loadUserInfo(this.correntUser);
 
         System.out.println(this.correntUser.getLastName());
