@@ -30,14 +30,6 @@ public class LoginController {
     @FXML
     private PasswordField txtPassword;
 
-    //private FXMLLoader loader;
-
-    //public LoginController(FXMLLoader loader){
-
-        //this.loader = loader;
-
-    //}
-
     public void btnClose_OnAction(ActionEvent event) {
         Stage stage = (Stage) btnClose.getScene().getWindow();
         stage.close();
@@ -77,22 +69,18 @@ public class LoginController {
 
                     responseLabel.setText("Login successful!!");
 
-                    User user = new User(
-                            queryResult.getInt("id"),
-                            queryResult.getString("username"),
-                            queryResult.getString("first_name"),
-                            queryResult.getString("last_name"),
-                            queryResult.getString("email")
-                    );
-
-                    //loader = (FXMLLoader) loader.getClass().getResource("/com/empresa/systemerp/view/ErpScreen.fxml");
+                    User user = User.getInstance();
+                    user.setUsername(queryResult.getString("username"));
+                    user.setFirst_name(queryResult.getString("first_name"));
+                    user.setLast_name(queryResult.getString("last_name"));
+                    user.setEmail(queryResult.getString("email"));
+                    user.setId(queryResult.getInt("id"));
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/empresa/systemerp/view/ErpScreen.fxml"));
                     Parent root = loader.load();
 
                     ErpScreen erpScreenController = loader.getController();
                     erpScreenController.setUserName(user.getFullName());
-                    erpScreenController.setCorrentUser(user);
 
                     Stage newStage = new Stage();
                     newStage.initStyle(StageStyle.DECORATED);

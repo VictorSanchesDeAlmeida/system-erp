@@ -17,11 +17,9 @@ public class ErpScreen {
     @FXML
     private Label nameUser;
 
-    private User correntUser;
 
     public void setUserName(String userName){nameUser.setText("Olá, " + userName);}
 
-    public void setCorrentUser(User user){correntUser = user;}
 
     public void DashboardRedirect(javafx.event.ActionEvent actionEvent) throws IOException {
 
@@ -44,11 +42,8 @@ public class ErpScreen {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/empresa/systemerp/view/Account.fxml"));
         Parent fxml = loader.load();
 
-        AccountController userCorrent = loader.getController();
-
-        userCorrent.loadUserInfo(this.correntUser);
-
-        System.out.println(this.correntUser.getLastName());
+        AccountController accountController = loader.getController();
+        accountController.loadUserInfo();
 
         contentArea.getChildren().clear();
         contentArea.getChildren().add(fxml);

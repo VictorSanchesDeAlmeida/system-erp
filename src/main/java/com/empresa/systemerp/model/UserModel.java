@@ -8,13 +8,9 @@ import javafx.scene.Parent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class UserModel extends User {
+public class UserModel {
 
-    public UserModel(int id, String username, String first_name, String last_name, String email) {
-        super(id, username, first_name, last_name, email);
-    }
-
-    public User updateUserInfo(String username, String firstname, String lastname, String email){
+    public Boolean updateUserInfo(String username, String firstname, String lastname, String email){
         DatabaseConnection conn = new DatabaseConnection();
         Connection connectionDb = conn.getConnection();
 
@@ -29,35 +25,33 @@ public class UserModel extends User {
 
             PreparedStatement stmt = connectionDb.prepareStatement(updateUser);
 
+            User user = User.getInstance();
+
             stmt.setString(1, username);
             stmt.setString(2, firstname);
             stmt.setString(3, lastname);
             stmt.setString(4, email);
-            stmt.setInt(5, this.getId());
+            stmt.setInt(5, user.getId());
 
             int rowsAffected = stmt.executeUpdate();
 
             if(rowsAffected > 0){
 
-                User user = new User(this.getId(), username, firstname, lastname, email);
+                user.setUsername(username);
+                user.setFirst_name(firstname);
+                user.setLast_name(lastname);
+                user.setEmail(email);
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/empresa/systemerp/view/ErpScreen.fxml"));
-                Parent root = loader.load();
-
-                ErpScreen erpScreenController = loader.getController();
-                erpScreenController.setCorrentUser(user);
-
-                System.out.println(user.getFullName());
-                return user;
+                return true;
 
             }else {
                 System.out.println("Usuario Não atualizado...");
-                return null;
+                return false;
             }
 
         }catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return false;
     }
 }
