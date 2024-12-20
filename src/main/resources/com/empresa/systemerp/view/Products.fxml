@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.empresa.systemerp.controller.ErpScreen">
+<AnchorPane prefHeight="574.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.empresa.systemerp.controller.ProductsController">
    <children>
-      <Text layoutX="277.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product" wrappingWidth="78.13671875" />
+      <Pane prefHeight="574.0" prefWidth="906.0">
+         <children>
+            <TableView fx:id="tableView" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="12.0" layoutY="43.0" prefHeight="524.0" prefWidth="882.0" scaleShape="false" style="-fx-background-color: linear-gradient( #ff5555 20%, white 100%); -fx-background-radius: 25;">
+              <columns>
+                <TableColumn fx:id="columnId" editable="false" prefWidth="47.0" resizable="false" style="-fx-background-color: transparent;" text="ID" />
+                <TableColumn fx:id="columnName" editable="false" prefWidth="457.0" style="-fx-background-color: transparent;" text="Nome" />
+                  <TableColumn fx:id="columnCategory" editable="false" prefWidth="181.0" style="-fx-background-color: transparent;" text="Categoria" />
+                  <TableColumn fx:id="columnValue" editable="false" prefWidth="118.0" style="-fx-background-color: transparent;" text="Valor" />
+                  <TableColumn fx:id="columnStatus" editable="false" prefWidth="75.0" style="-fx-background-color: transparent;" text="Status" />
+              </columns>
+            </TableView>
+            <Text fill="#ff5555" layoutX="14.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos">
+               <font>
+                  <Font name="Verdana Bold" size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

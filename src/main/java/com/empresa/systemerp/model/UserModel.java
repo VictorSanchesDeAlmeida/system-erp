@@ -1,9 +1,6 @@
 package com.empresa.systemerp.model;
 
 import com.empresa.systemerp.config.DatabaseConnection;
-import com.empresa.systemerp.controller.ErpScreen;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
